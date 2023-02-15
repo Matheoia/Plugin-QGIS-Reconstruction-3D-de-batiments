@@ -1,0 +1,47 @@
+Quelques questions :
+
+Font-ils les LoD en utilisant les LoD précédents ?
+Certainement
+
+Quelles sont les sources d'entrées ? Comment fait-il pour séparer les différentes élévations ? 
+polygone du cadastre donne peut-être la hauteur globale et LiDar HD donne les détails 
+si toujours hauteur : LoD 1.0, peut-être fait que avec cadastre
+
+Le fait-il d'ailleurs seulement grâce au polygone 2D ? 
+
+Quelle précision on veut ?
+
+Quelle classification est faite au sein des données Lidar ?
+soit batiment soit point au sol
+
+Concernant l'environment de visualisation des premiers résultats, 
+conseillez laspy ? openGL ?
+
+
+# --- APPEL --- # 
+
+Pourquoi les deux ?
+On identifie un bâtiment grâce au cadastre en nous donnant son emprise
+
+Au niveau de la classificaton :
+utiliser plutôt un nuage de points déjà classifié
+
+tolérance / niveau de précision :
+pour démarrage se placer dans un cas simple, pas d'obstacles autour, batiment propre
+
+distinction entre toit et murs dans les données du nuage de points ?
+à voir 
+
+remarque sur le système de référence :
+il faudra que l'utilisateur tranforme lui même ses données, change crs si différent
+voir plus tard pour reprojection
+
+visualisation directement sur QGIS
+si on arrive à classifier une tuile de LidarHD c'est déjà bon
+
+à investiger BD Topo remplacement de Cadastre
+
+si possible de réutiliser geoflow, ça serait top
+
+
+
