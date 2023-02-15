@@ -1,1 +1,1 @@
-# Plugin-QGIS-Reconstruction-3D-de-b-timents
+# Plugin-QGIS-Reconstruction-3D-de-bâtiments
