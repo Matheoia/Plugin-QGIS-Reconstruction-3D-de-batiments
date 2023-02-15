@@ -1,0 +1,50 @@
+# --- APPEL PRESENTATION 15/02 --- #
+
+Topic : démarrage projet plugin QGIS de reconstruction 3D de bâtiment
+
+partir de nuages de points et données ddu cadastre, de bâts, lidar HD
+pris aussi du MNT pour l'élévation, et à partir de ça reconstruire
+
+rajouter détails au fur et à mesure
+
+
+enjeu : trouver les sources de données et les traiter avec même niveau de détail
+dans l'idée prendre lidar HD, cadastre, à voir si + judicieuses
+
+2 étapes : 
+déjà réutiliser leur logiciel qui est en opensource
+puis l'intégrer dans un plugin QGIS pour rendre dispo pour un lambda
+
+
+Premièrement : preuve de concept dans un environment idéal 
+(question Louis :quel env ? il existe template, assistant pour code)
+(pour les prototypes, essayer que ça marche, voir ce qui existe)
+Puis, itérer dessus et puis généraliser la génération 2D 
+puis intégrer plugin 3D
+
+Il faut que le code marche avec une documentation, avec docu technique si possible
+avec une bonne qualité logicielle (bonnes pratiques dev logiciel)
+
+Jeu de données test
+contrainte : code opensource sur GitLab 
+il faudrait tout garder par écrit, tout doit être traçable notamment l'avancement 
+tous les dev en anglais, tickets en français
+ 
+explications méthodes développement en V / AGILE
+soit on connaît directement l'objectif / soit on améliore et ajoute des fonctionalités petit à petit
+ 
+Liste de tâche / suivi des tâches 
+
+Lien pad oslandia donné par thomas
+dedans kanban / gitflow
+
+télécharger lerru jeu de données et on peut jouer avec dans QGIS
+lien gitlab du code du logiciel 
+
+premier but : essayer de reconstruire un seul bat en 3D
+mettre en place le projet gitHub
+comment on s'organise
+
+https://pad.oslandia.net/tcRwC0x85ScOhLpyphkdOIA?both
+
+
