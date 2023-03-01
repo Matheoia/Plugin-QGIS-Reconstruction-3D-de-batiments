@@ -2,7 +2,7 @@
 
 Topic : démarrage projet plugin QGIS de reconstruction 3D de bâtiment
 
-partir de nuages de points et données ddu cadastre, de bâts, lidar HD
+partir de nuages de points et données du cadastre, de bâts, lidar HD
 pris aussi du MNT pour l'élévation, et à partir de ça reconstruire
 
 rajouter détails au fur et à mesure
