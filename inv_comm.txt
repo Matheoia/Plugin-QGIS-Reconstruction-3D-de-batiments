@@ -10,7 +10,3 @@ C:\geoDev\wippolder\wippolder.las
 C:\geoDev\wippolder\config.toml
 
 lod22-reconstruct --input_footprint=C:\geoDev\wippolder\wippolder.gpkg \--input_pointcloud=C:\geoDev\wippolder\wippolder.las --config C:\geoDev\wippolder\config.toml
-
-
-salut, as tu de ton côté essayer de faire fonctionner l'invite de commandes sur un jeu de données test ou pas du tout ? j'ai essayé mais je rencontre un petit
-je me suis lancé pour faire marcher l'invite de commandes sur un jeu de données test mais je rencontre toujours la même erreur
