@@ -1,0 +1,16 @@
+lod22-reconstruct --input_footprint=C:\geoDev\Donnees\Batiment\bats-tuile-lyon.gpkg --input_pointcloud=C:\geoDev\Donnees\Nuage\nuage_quartier_lyon.las --output_cityjson=C:\geoDev\quartier_lyon\model.json --output_ogr=C:\geoDev\quartier_lyon\model_2d.gpkg --output_obj_lod12=C:\geoDev\quartier_lyon\model_lod12.obj --output_obj_lod13=C:\geoDev\quartier_lyon\model_lod13.obj --output_obj_lod22=C:\geoDev\quartier_lyon\model_lod22.obj
+
+C:\geoDev\quartier_lyon
+C:\geoDev\Donnees\Batiment\test-bat-deux.gpkg
+C:\geoDev\Donnees\Batiment\bats-tuile-lyon.gpkg
+C:\geoDev\Donnees\Batiment\polygone_bat.gpkg
+
+C:\geoDev\wippolder\wippolder.gpkg
+C:\geoDev\wippolder\wippolder.las
+C:\geoDev\wippolder\config.toml
+
+lod22-reconstruct --input_footprint=C:\geoDev\wippolder\wippolder.gpkg \--input_pointcloud=C:\geoDev\wippolder\wippolder.las --config C:\geoDev\wippolder\config.toml
+
+
+salut, as tu de ton côté essayer de faire fonctionner l'invite de commandes sur un jeu de données test ou pas du tout ? j'ai essayé mais je rencontre un petit
+je me suis lancé pour faire marcher l'invite de commandes sur un jeu de données test mais je rencontre toujours la même erreur
