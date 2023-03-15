@@ -1,0 +1,1 @@
+lod22-reconstruct --input_footprint=batiment_simple.shp --input_pointcloud=batiment_simple.las --output_cityjson=C:\Users\lstei\Documents\Devoir\ENSG\2A\Projet_dev\Donnees_test_geoflow\Manosque_jeu_test\batiment_simple\result\model.json --output_ogr=C:\Users\lstei\Documents\Devoir\ENSG\2A\Projet_dev\Donnees_test_geoflow\Manosque_jeu_test\batiment_simple\result\model_2d.gpkg
