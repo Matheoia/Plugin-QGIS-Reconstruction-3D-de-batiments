@@ -1,12 +1,16 @@
-lod22-reconstruct --input_footprint=C:\geoDev\Donnees\Batiment\bats-tuile-lyon.gpkg --input_pointcloud=C:\geoDev\Donnees\Nuage\nuage_quartier_lyon.las --output_cityjson=C:\geoDev\quartier_lyon\model.json --output_ogr=C:\geoDev\quartier_lyon\model_2d.gpkg --output_obj_lod12=C:\geoDev\quartier_lyon\model_lod12.obj --output_obj_lod13=C:\geoDev\quartier_lyon\model_lod13.obj --output_obj_lod22=C:\geoDev\quartier_lyon\model_lod22.obj
+lod22-reconstruct --input_footprint=C:\geoDev\Donnees\wippolder\wippolder.gpkg --input_pointcloud=C:\geoDev\Donnees\wippolder\wippolder.las --output_cityjson=C:\geoDev\output\wippolder\model.json --output_ogr=C:\geoDev\output\wippolder\model_2d.gpkg
 
-C:\geoDev\quartier_lyon
-C:\geoDev\Donnees\Batiment\test-bat-deux.gpkg
-C:\geoDev\Donnees\Batiment\bats-tuile-lyon.gpkg
-C:\geoDev\Donnees\Batiment\polygone_bat.gpkg
+lod22-reconstruct --input_footprint=C:\geoDev\Donnees\wippolder_test\wippolder-polygon.shp --input_pointcloud=C:\geoDev\Donnees\wippolder\wippolder.las --output_cityjson=C:\geoDev\Donnees\wippolder_test\test1\model.json --output_ogr=C:\geoDev\Donnees\wippolder_test\test1\model_2d.gpkg
 
-C:\geoDev\wippolder\wippolder.gpkg
-C:\geoDev\wippolder\wippolder.las
-C:\geoDev\wippolder\config.toml
+geof flowchart.json --input_footprint=/some/path/file.gpkg --building_identifier=2
+
 
 lod22-reconstruct --input_footprint=C:\geoDev\wippolder\wippolder.gpkg \--input_pointcloud=C:\geoDev\wippolder\wippolder.las --config C:\geoDev\wippolder\config.toml
+
+lod22-reconstruct --input_footprint=Donnees\wippolder\wippolder.gpkg --input_pointcloud=Donnees\wippolder\wippolder.las --output_cityjson=Donnees\wippolder_test\test_gid\model.json --output_ogr=Donnees\wippolder_test\test_gid\model_2d.gpkg
+
+lod22-reconstruct --input_footprint=  --input_pointcloud=  --output_ogr=  --output_cityjson=
+
+lod22-reconstruct --input_footprint=C:\geoDev\louis\batiment_simple.gpkg --input_pointcloud=C:\geoDev\louis\batiment_simple.las --output_cityjson=C:\geoDev\output\model.json --output_ogr=C:\geoDev\output\model_2d.gpkg --output_ogr_EPSG=2154
+
+--output_ogr_EPSG="EPSG::2154" 
