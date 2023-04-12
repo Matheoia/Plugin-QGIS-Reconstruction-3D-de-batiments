@@ -1,13 +1,14 @@
 import json
-
 # Ouvrir le fichier JSON en lecture
-with open('test.json', 'r') as f:
+with open('base.json', 'r') as f:
     # Charger les données JSON dans une variable Python
     data = json.load(f)
 
+der_bound = data['CityObjects']["1"]["geometry"][0]["boundaries"][0][0][-1]
+
 # Calculer les nouvelles valeurs et les stocker dans une liste
-base_value = data['vertices'][0][2]
-new_verti = [v[2]-base_value for v in data['vertices']]
+base_value = data['vertices'][der_bound+1][2]
+new_verti = [v[2]-base_value if i > der_bound else v[2] for i, v in enumerate(data['vertices'])]
 
 # Modifier les valeurs de la clé 'vertices' en utilisant les nouvelles valeurs
 for i, vertex in enumerate(data['vertices']):
