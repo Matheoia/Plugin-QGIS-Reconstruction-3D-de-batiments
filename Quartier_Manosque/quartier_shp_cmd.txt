@@ -1,0 +1,1 @@
+lod22-reconstruct --input_footprint=quartier.shp --input_pointcloud=PTS_LAMB93_IGN69_0923_6308_quartier.las --output_cityjson=C:\Users\lstei\Documents\Devoir\ENSG\2A\Projet_dev\Donnees_test_geoflow\Manosque_jeu_test\Quartier\result\model.json --output_ogr=C:\Users\lstei\Documents\Devoir\ENSG\2A\Projet_dev\Donnees_test_geoflow\Manosque_jeu_test\Quartier\result\model_2d.gpkg
