@@ -4,6 +4,7 @@ with open('base.json', 'r') as f:
     # Charger les données JSON dans une variable Python
     data = json.load(f)
 
+data['metadata']['referenceSystem'] = "EPSG::2154"
 der_bound = data['CityObjects']["1"]["geometry"][0]["boundaries"][0][0][-1]
 
 # Calculer les nouvelles valeurs et les stocker dans une liste
