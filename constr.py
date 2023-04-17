@@ -8,7 +8,9 @@ footprint="C:\QGIS_test\wippolder\wippolder.gpkg "
 pointcloud="C:\QGIS_test\wippolder\wippolder.las"
 
 #Fonction qui appelle geoflow
-def Construit_bat (index):
+def Construit_bat (footprint,pointcloud,index=1):
+    
+    
     """index est le batiment souhaité au sein du footprint"""
     footprint_select=str(index)
     output_json="C:\QGIS_test\output\wippolder_"+footprint_select+".json"
@@ -25,7 +27,7 @@ cadastre = gpd.read_file('C:\QGIS_test\wippolder\wippolder.gpkg')
 Index=cadastre.iloc[:, 7] #7e colonne correspond à la colonne des indexes des batiments
 print ("nombre de batiment=",len(Index))
 
-# Construit_bat(2)
+Construit_bat()
 
 quartier = {} #pour créer la variable batiment_index (variable dont le nom change à chaque tour de boucle)
 
@@ -33,15 +35,37 @@ quartier = {} #pour créer la variable batiment_index (variable dont le nom chan
 city = {}
 vertices=[]
 N=len(vertices)
+
 for index in range(1,3): #Boucle pour 2 batiments (qui se nomment wippolder_1.json et [...]_2.json )
     with open('C:\QGIS_test\output\wippolder_'+str(index)+'.json') as mon_fichier:
         quartier[f'batiment_{index}'] = json.load(mon_fichier) #création d'un dictionnaire dans lequel on met les batiments
         
         vertices=vertices+quartier[f"batiment_{index}"]['vertices'] #On ajoute les points du batiment_index à la liste finale vertices
+        delta=quartier[f"batiment_{index}"]['transform']['translate']
+        for point in range (len(vertices)):
+            for i in range (3):
+                vertices[point][i]=vertices[point][i]+delta[i]
+            
+
+        
+        
+        
         for nom, cityobject in quartier[f"batiment_{index}"]['CityObjects'].items():
             city[str(index)+'.'+nom] = cityobject #On renomme le cityobject en fonction de la classe parent (index du batiment)
+            
+            #On change le nom des parents/enfants
+            # !! Il faudra vérifier que ['1']=1(str)
+            if cityobject['attributes']=={}:
+                 for string in cityobject['parents'] :
+                     cityobject['parents']=str(index)+'.'+string   
+                 
+            else:
+                for string in cityobject['children'] :
+                     cityobject['children']=str(index)+'.'+string   
        
         
+        # Les identifiants des points sont modifiés a=en prenant en compte les 
+        # points des batiments précédents
         for cityobject in quartier[f"batiment_{index}"]['CityObjects'].values():
             if cityobject['attributes']=={}:
                 for geometry in cityobject["geometry"]:
@@ -50,12 +74,16 @@ for index in range(1,3): #Boucle pour 2 batiments (qui se nomment wippolder_1.js
                             for point in L_point :
                                 for coord in point:
                                     coord=coord+N
+                                    
+                                    
             else:
                 for geometry in cityobject["geometry"]:
                     for boundary in geometry["boundaries"]:
                         for L_point in boundary:
-                            for point in L_point :
-                                point=point+N
+                            L_point_ecri=[]
+                            for i in range (len(L_point)) :
+                                L_point[i]=L_point[i]+N
+                                
     N=len(vertices) #nb actuel de pts dans le json final
 
 #Initialisation des autres classes pour le JSON
@@ -63,6 +91,8 @@ metadata=quartier['batiment_1']['metadata'] #Pour l'instant données du 1e batim
 transform=quartier['batiment_1']['transform'] #Pour l'instant données du 1e batiment
 version=quartier['batiment_1']['version'] #Pour l'instant données du 1e batiment
 typ=quartier['batiment_1']['type'] #Pour l'instant données du 1e batiment
+
+
 
 #Creation du json
 json_obj = {"CityObjects": city, "metadata": metadata, "transform": transform, "type":typ, "version":version, "vertices":vertices}
