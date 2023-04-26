@@ -27,7 +27,8 @@ cadastre = gpd.read_file('C:\QGIS_test\wippolder\wippolder.gpkg')
 Index=cadastre.iloc[:, 7] #7e colonne correspond à la colonne des indexes des batiments
 print ("nombre de batiment=",len(Index))
 
-Construit_bat()
+# for i in range (30):
+#     Construit_bat(footprint,pointcloud,index=i)
 
 quartier = {} #pour créer la variable batiment_index (variable dont le nom change à chaque tour de boucle)
 
@@ -44,10 +45,7 @@ for index in range(1,3): #Boucle pour 2 batiments (qui se nomment wippolder_1.js
         delta=quartier[f"batiment_{index}"]['transform']['translate']
         for point in range (len(vertices)):
             for i in range (3):
-                vertices[point][i]=vertices[point][i]+delta[i]
-            
-
-        
+                vertices[point][i]=vertices[point][i]+delta[i]     
         
         
         for nom, cityobject in quartier[f"batiment_{index}"]['CityObjects'].items():
@@ -57,11 +55,13 @@ for index in range(1,3): #Boucle pour 2 batiments (qui se nomment wippolder_1.js
             # !! Il faudra vérifier que ['1']=1(str)
             if cityobject['attributes']=={}:
                  for string in cityobject['parents'] :
-                     cityobject['parents']=str(index)+'.'+string   
+                     cityobject['parents']=[str(index)+'.'+string]
+                     
                  
             else:
                 for string in cityobject['children'] :
-                     cityobject['children']=str(index)+'.'+string   
+                     cityobject['children']=[str(index)+'.'+string]
+                     print(cityobject['children'])
        
         
         # Les identifiants des points sont modifiés a=en prenant en compte les 
@@ -72,8 +72,10 @@ for index in range(1,3): #Boucle pour 2 batiments (qui se nomment wippolder_1.js
                     for boundary in geometry["boundaries"]:
                         for L_point in boundary:
                             for point in L_point :
-                                for coord in point:
-                                    coord=coord+N
+                                for coord in range (len(point)):
+                                    point[coord]=point[coord]+N
+                        
+                                 
                                     
                                     
             else:
@@ -83,6 +85,7 @@ for index in range(1,3): #Boucle pour 2 batiments (qui se nomment wippolder_1.js
                             L_point_ecri=[]
                             for i in range (len(L_point)) :
                                 L_point[i]=L_point[i]+N
+                                
                                 
     N=len(vertices) #nb actuel de pts dans le json final
 
