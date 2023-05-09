@@ -1,0 +1,53 @@
+README (français) 
+
+Ce projet permet la recontruction et la visualisation en 3D de bâtiments dans Qgis.
+
+Le plugin est basé sur plusieurs logiciels. 
+- 	Tout d'abord Geoflow qui est le principal support de ce plugin. Geoflow est un logiciel 	dévéloppé par des chercheurs néeerlandais qui prends en entrée deux sources de données 	principales : les données du BAG (BAG étant le registre des bâtiments et des adresses le 	plus détaillé et disponible en Open Source aux Pays-Bas), et les données de l'AHN (carte 		numérique des altitudes aux Pays-Bas). A partir de ces deux sources de données, geowflow va 	reconstruire en 3D ces bâtiments, par la suite, ces bâtiments vont être visualisés dans 3D 	Bag qui est un visionneur 3D et qui met à disposition une maquette des Pays-Bas en 3D.
+-	Ce projet utilise également CityJSON Loader qui est un plugin Qgis permettant de charger des 	ensembles de données CityJSON.
+Le téléchargement de ces deux modules est indispensable afin de pouvoir utiliser le plugin CityBuilder. 
+
+TYPES DE DONNEES PRIS EN ENTREE PAR LE PLUGIN CityBuilder.
+
+Ce plugin prends deux types de données en entrées :
+
+ -	Les données du cadastre au format shapefile (shp).
+ -	Les données Lidar au format .las
+
+Ci-dessous des liens vers le site où vous pourrez vous procurer ces jeux de données.
+
+- 	Pour les données du cadastre français : https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/shp/
+- 	Pour les données Lidar : https://geoservices.ign.fr/lidarhd
+
+Le plugin accepte également le format Geopackage (gpkg) pour les données du cadastre.
+
+COMMENT UTILISER LE PLUGIN CityBuilder ?
+
+1 - Installation
+
+Pour obtenir le code source et le mettre directement dans un plugin Qgis, rendez-vous sur la page Gitlab. 
+Attention, ce plugin n'est opérant que sur les versions de Qgis antérieures à la 3.3
+
+Pour que ce plugin soit fonctionnel, vous avez besoin d'installer deux autres logiciels.
+
+1.1 ) Installer Geoflow
+
+rendez-vous sur le lien suivant : https://github.com/geoflow3d/geoflow-bundle/releases
+
+téléchargez Geoflow-cli-2022.06.17-win64.exe
+
+1.2) Installer le plugin Qgis CityJSON Loader
+
+depuis Qgis, allez dans l'onglet "Extensions" puis recherchez le plugin "CityJSON Loader" et installez-le. 
+
+
+CODE SOURCE (Pour les développeurs)
+
+Rendez-vous sur la page GitLab.
+
+
+
+
+
+
+
