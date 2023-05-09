@@ -1,0 +1,14 @@
+Jeux de données de test :
+
+Au cours du développement du plugin, nous avons dû construire plusieurs jeux de données pour tester différents aspects et fonctionnalités de notre script.
+Tous ces jeux de données ont été construits en utilisant la même méthode : pour chaque jeu de données, nous avons dû récupérer un nuage de points .las et une empreinte .shp. 
+
+Pour le nuage de points, nous avons téléchargé une dalle de Lidar HD [1] disponible gratuitement sur Internet. Ensuite, à l'aide d'un logiciel adapté (dans notre cas CloudCompare), nous avons isolé la partie du nuage de points qui nous intéressait (une maison ou un quartier par exemple). Nous avons ensuite exporté cet échantillon en .las. 
+Pour l'emprise au sol, nous avions le choix entre la BD Topo [2] de l'IGN et le cadastre français [3]. Ces deux derniers sont également disponibles gratuitement, mais le premier est un peu plus précis car le cadastre peut contenir un décalage d'un ou deux mètres par rapport au nuage de points. Cependant, il est dans le même EPSG que le HD Lidar (EPSG:2154), ce qui n'est pas le cas de la BD Topo, et cette erreur de l'ordre du mètre n'ayant pas d'impact sur la construction des bâtiments en 3D grâce à Geoflow, nous avons donc choisi le Cadastre. Nous avons ensuite ouvert dans QGis la couche .shp du cadastre et sélectionné les empreintes correspondant aux bâtiments isolés dans le nuage de points et l'avons exporté dans une autre couche shapefile.
+
+
+
+Nous avons ainsi construit un jeu de données contenant un nuage de points simplifié et son empreinte associée, qui sont les deux fichiers nécessaires pour exécuter GeoFlow.
+
+
+Parmi tous les jeux de données que nous avons construits, il y a deux ensembles représentant chacun un simple bâtiment de forme différente, un ensemble de quelques maisons et enfin un ensemble à plus grande échelle, à savoir un quartier entier.

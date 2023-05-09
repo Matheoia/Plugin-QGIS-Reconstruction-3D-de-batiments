@@ -1,0 +1,14 @@
+Test datasets :
+
+During the development of the plugin, we had to build several datasets to test different aspects and features of our script.
+All these datasets were built using the same method: for each dataset, we had to retrieve a .las point cloud and a .shp footprint. 
+
+For the point cloud, we downloaded a freely available HD Lidar slab [1] from the Internet. Then, using a suitable software (in our case CloudCompare), we isolated the part of the point cloud we were interested in (a house or a neighbourhood for example). We then exported this sample in .las. 
+For the land area, we had the choice between the BD Topo [2] of the IGN and the French cadastre [3]. The latter two are also available free of charge, but the former is a little more accurate because the cadastre may contain an offset of one or two metres in relation to the point cloud. However, it is in the same EPSG as the HD Lidar (EPSG:2154), which is not the case for the BD Topo, and this error of the order of a metre has no impact on the construction of buildings in 3D thanks to Geoflow, so we chose the Cadastre. We then opened in QGis the .shp layer of the cadastre and selected the footprints corresponding to the isolated buildings in the point cloud and exported it in another shapefile layer.
+
+
+
+We thus built a dataset containing a simplified point cloud and its associated footprint, which are the two files needed to run GeoFlow.
+
+
+Amongst all the datasets we have built, there are two sets each representing a single building of different shape, a set of a few houses and finally a larger scale set, namely a whole neighbourhood.w
