@@ -1,0 +1,49 @@
+README (English)
+
+README (french) 
+
+This project allows the reconstruction and visualization in 3D of buildings in Qgis.
+
+The plugin is based on several software. 
+- First of all Geoflow which is the main support of this plugin. Geoflow is a software developed by Dutch researchers that takes as input two main data sources: the BAG data (BAG being the most detailed building and address register available in open source in the Netherlands), and the AHN data (digital elevation map of the Netherlands). From these two data sources, geowflow will reconstruct these buildings in 3D, after which these buildings will be visualized in 3D Bag which is a 3D viewer and which provides a 3D model of the Netherlands.
+- This project also uses CityJSON Loader which is a Qgis plugin to load CityJSON datasets.
+Downloading these two modules is necessary in order to use the CityBuilder plugin. 
+
+TYPES OF DATA TAKEN IN BY THE CityBuilder PLUGIN.
+
+This plugin takes two types of data as input:
+
+ - Cadastral data in shapefile (shp) format.
+ - Lidar data in .las format
+
+Below are links to the site where you can get these datasets.
+
+- For the French cadastral data: https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/shp/
+- For Lidar data: https://geoservices.ign.fr/lidarhd
+
+The plugin also accepts the Geopackage (gpkg) format for cadastral data.
+
+HOW TO USE THE CityBuilder PLUGIN ?
+
+1 - Installation
+
+To get the source code and put it directly in a Qgis plugin, go to the Gitlab page. 
+Be careful, this plugin is only working on Qgis versions before 3.3
+
+For this plugin to work, you need to install two other softwares.
+
+1.1 ) Install Geoflow
+
+go to the following link: https://github.com/geoflow3d/geoflow-bundle/releases
+
+téléchargez Geoflow-cli-2022.06.17-win64.exe
+
+1.2) Install the Qgis CityJSON Loader plugin
+
+from Qgis, go to the tab "Extensions" then search for the plugin "CityJSON Loader" and install it. 
+
+
+SOURCE CODE (For developers)
+
+Go to the GitLab page.
+
