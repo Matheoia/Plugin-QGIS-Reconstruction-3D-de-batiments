@@ -46,6 +46,7 @@ depuis Qgis, allez dans l'onglet "Extensions" puis recherchez le plugin "CityJSO
 - ouvrir Qgis se rendre dans l'onglet Extension < Installer / gérer les extensions < installer depuis un ZIP
 - Charger le chemin d'accès où vous avez placé le ZIP.
 - Cliquez sur Installer le plugin
+![ZIP](https://github.com/Matheoia/Plugin-QGIS-Reconstruction-3D-de-batiments/blob/Maud/images/ZIP.png)
 
 
 
