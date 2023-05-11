@@ -1,0 +1,34 @@
+-rappeler le contexte (présentation des équipes + présenter état de l'art fait au préalable par l'entreprise + rappels des outils utilisés)
+-presentation objectifs (obj + planning + liste des livrables)
+-matrice des risques
+-présentation des problèmes rencontrés
+-bilan réussi/pas réussi
+-apport au commanditaire (sens utilisateur)
+-amélioration
+
+
+Notes coaching:
+Consigne Copil
+- prendre recul par rapport au projet : quoi qui peut être améliorre : qu'est qu'on a fait, pas fait ?
+- quels sont les apports du projet pour le commanditaire ? qu'est qu'il a d'innovant, quelle est la situation avant, quelle est la situation après ? essayer de valorier le projet ? Quel est l'apport du projet ? Comment il faisaient avant le plugin ? qu'est ce que notre travail a apporter dans sa manière de travailler/ de voir les choeses ? qui va l'utiliser ? Utilisation personnelle ou est-ce qu'il y a d'autres utilisateurs à former ?
+- envoyer présentation à l'avance ?
+- rappler toutes les demandes avec les degrés de priorité avec fait/ pas fait etc..
+
+
+
+Questions:
+-tout d’abord, est ce que « reporting project » c’est le diapo du copil ou c’est un document à part entière ? Si c’est un document à part entière, quelle est la différence entre ces deux derniers ?
+	Le reporting projet, ce sont les éléments que l’on vous a demandé d’actualiser et de présenter à chaque séance de coaching (calendrier, matrice des 	risques, liste des tâches,…) 
+
+-de plus est il nécessaire de faire apparaître dans la présentation les 8 pages de matrices de risques que nous avons et à l'oral sélectionner les plus pertinents ou est ce qu’on sélectionne directement dans le diapo? Aussi les risques techniques sont ils pertinents à présenter ?
+	Il n’est plus nécessaire de présenter les risques pour le COPIL de clôture. Le projet étant terminé, il n’est plus nécessaire de gérer les risques.
+
+-Enfin lors des problèmes rencontrés : Est-ce que les problèmes techniques sont à présenter ? Si oui, à quel point faut il rentrer dans le détail ? 
+	Oui mais pas de façon détaillée. Vous n’avez que 20 minutes de présentation. 
+
+
+Liste des problèmes:
+	--> Humains:
+		-fatigue et baisse de motivation générale du groupe = baisse d'éfficacité sur certaines journées.
+
+	--> Technique:
