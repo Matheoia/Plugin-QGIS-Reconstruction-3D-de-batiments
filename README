@@ -7,21 +7,21 @@ Le plugin est basé sur plusieurs logiciels.
 -	Ce projet utilise également CityJSON Loader qui est un plugin Qgis permettant de charger des 	ensembles de données CityJSON.
 Le téléchargement de ces deux modules est indispensable afin de pouvoir utiliser le plugin CityBuilder. 
 
-TYPES DE DONNEES PRIS EN ENTREE PAR LE PLUGIN CityBuilder.
+1. TYPES DE DONNEES PRIS EN ENTREE PAR LE PLUGIN CityBuilder.
 
-Ce plugin prends deux types de données en entrées :
+     Ce plugin prends deux types de données en entrées :
 
- -	Les données du cadastre au format shapefile (shp).
- -	Les données Lidar au format .las
+      -	Les données du cadastre au format shapefile (shp).
+      -	Les données Lidar au format .las
 
-Ci-dessous des liens vers le site où vous pourrez vous procurer ces jeux de données.
+     Ci-dessous des liens vers le site où vous pourrez vous procurer ces jeux de données.
 
-- 	Pour les données du cadastre français : https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/shp/
-- 	Pour les données Lidar : https://geoservices.ign.fr/lidarhd
+     - 	Pour les données du cadastre français : https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/shp/
+     - 	Pour les données Lidar : https://geoservices.ign.fr/lidarhd
 
-Le plugin accepte également le format Geopackage (gpkg) pour les données du cadastre.
+     Le plugin accepte également le format Geopackage (gpkg) pour les données du cadastre.
 
-COMMENT UTILISER LE PLUGIN CityBuilder ?
+2. COMMENT UTILISER LE PLUGIN CityBuilder ?
 
 1 - Installation
 
@@ -38,7 +38,7 @@ téléchargez Geoflow-cli-2022.06.17-win64.exe
 
 1.2) Installer le plugin Qgis CityJSON Loader
 
-depuis Qgis, allez dans l'onglet "Extensions" puis recherchez le plugin "CityJSON Loader" et installez-le. 
+Depuis Qgis, allez dans l'onglet "Extensions" puis recherchez le plugin "CityJSON Loader" et installez-le. 
 
 
 1.3) Installer le plugin CityBuilder
@@ -47,6 +47,26 @@ depuis Qgis, allez dans l'onglet "Extensions" puis recherchez le plugin "CityJSO
 - Charger le chemin d'accès où vous avez placé le ZIP.
 - Cliquez sur Installer le plugin
 ![ZIP](https://github.com/Matheoia/Plugin-QGIS-Reconstruction-3D-de-batiments/blob/Maud/images/ZIP.png)
+
+2- Utilisation
+
+2.1) Génération du JSON
+
+Cliquez sur CityBuilder : - ajoutez le fichier shapefile qui vous servira de footprint
+                          - ajoutez le nuage de point au format .las
+                          - Choisissez l'emplacement où vous voulez enregistrer votre fichier JSON
+                         
+ 2.2) Visualisation du JSON grâce au plugin CityJSON Laoder
+ 
+ Cliquez sur CityJSON Loader : - ajoutez le fichier JSON que vous avez précédemment générer 
+                               - cocher la case Split Layers according to object type 
+                               - cocher la case Load semantic surfaces (afin que vous ayez tous les Lod différenciés dans l'affichage de votre bâtiment)
+                               
+![CityJson_Loader](https://github.com/Matheoia/Plugin-QGIS-Reconstruction-3D-de-batiments/blob/Maud/images/cityJson_Loader.png)
+
+Allez par la suite dans l'onglet Vue < Vue 3D < Nouvelle vue Cartographique 3D. Vous pourrez voir votre bâtiment reconstruit en 3D. 
+
+![Vue_3D](https://github.com/Matheoia/Plugin-QGIS-Reconstruction-3D-de-batiments/blob/Maud/images/vue_carto_3D.png)
 
 
 
