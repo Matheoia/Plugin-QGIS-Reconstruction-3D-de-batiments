@@ -41,9 +41,16 @@ téléchargez Geoflow-cli-2022.06.17-win64.exe
 depuis Qgis, allez dans l'onglet "Extensions" puis recherchez le plugin "CityJSON Loader" et installez-le. 
 
 
-CODE SOURCE (Pour les développeurs)
+1.3) Installer le plugin CityBuilder
+- télécharger le plugin CityBuilder.zip ci-dessous
+- ouvrir Qgis se rendre dans l'onglet Extension < Installer / gérer les extensions < installer depuis un ZIP
+- Charger le chemin d'accès où vous avez placé le ZIP.
+- Cliquez sur Installer le plugin
 
-Rendez-vous sur la page GitLab.
+
+
+
+
 
 
 
