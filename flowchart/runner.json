@@ -1,0 +1,1008 @@
+{
+  "globals": {
+    "CJ_DATASET_TITLE": [
+      "str",
+      "3D Basisbestand"
+    ],
+    "INPUT_FOOTPRINT_SOURCE": [
+      "str",
+      "test-data/wippolder.gpkg"
+    ],
+    "INPUT_LAS_FILES": [
+      "str",
+      "test-data/wippolder.las"
+    ],
+    "OUTPUT_CITYJSON_DIR": [
+      "str",
+      "cityjson"
+    ],
+    "OUTPUT_CRS": [
+      "str",
+      "urn:ogc:def:crs:EPSG::2154"
+    ],
+    "OUTPUT_DB_CONNECTION": [
+      "str",
+      "PG:dbname=databasename port=5432 host=localhost user=username password=password1234"
+    ],
+    "OUTPUT_FORMAT": [
+      "str",
+      "GPKG"
+    ],
+    "OUTPUT_LAYERNAME_LOD11_2D": [
+      "str",
+      "LoD11_2D"
+    ],
+    "OUTPUT_LAYERNAME_LOD11_3D": [
+      "str",
+      "LoD11_3D"
+    ],
+    "OUTPUT_LAYERNAME_LOD12_2D": [
+      "str",
+      "LoD12_2D"
+    ],
+    "OUTPUT_LAYERNAME_LOD12_3D": [
+      "str",
+      "LoD12_3D"
+    ],
+    "OUTPUT_LAYERNAME_LOD13_2D": [
+      "str",
+      "LoD13_2D"
+    ],
+    "OUTPUT_LAYERNAME_LOD13_3D": [
+      "str",
+      "LoD13_3D"
+    ],
+    "OUTPUT_OBJ_DIR": [
+      "str",
+      "obj"
+    ],
+    "RUN_REFERENCE": [
+      "str",
+      "v2022"
+    ],
+    "TILE_ID": [
+      "str",
+      "1"
+    ],
+    "id_attribute": [
+      "str",
+      "identificatie"
+    ],
+    "line_detect__epsilon": [
+      "float",
+      0.4000000059604645
+    ],
+    "line_detect__min_points_lower": [
+      "int",
+      5
+    ],
+    "line_detect__min_points_upper": [
+      "int",
+      10
+    ],
+    "lod13__step_height": [
+      "float",
+      3.0
+    ],
+    "normal_estimate__k": [
+      "int",
+      8
+    ],
+    "optimisation_data_term": [
+      "int",
+      7
+    ],
+    "overwrite_output": [
+      "bool",
+      false
+    ],
+    "plane_detect__epsilon": [
+      "float",
+      0.20000000298023224
+    ],
+    "plane_detect__k": [
+      "int",
+      15
+    ],
+    "plane_detect__min_points": [
+      "int",
+      15
+    ],
+    "plane_detect__normal_angle": [
+      "float",
+      0.75
+    ],
+    "roof_elevation__percentile": [
+      "float",
+      0.699999988079071
+    ],
+    "skip_attribute_name": [
+      "str",
+      "kas_warenhuis"
+    ]
+  },
+  "nodes": {
+    "CityJSONWriter": {
+      "marked_inputs": {
+        "attributes": false,
+        "footprints": false,
+        "geometry_lod12": false,
+        "geometry_lod13": false,
+        "geometry_lod22": false,
+        "part_attributes": false
+      },
+      "parameters": {
+        "meta_identifier": "{{RUN_REFERENCE}}_{{TILE_ID}}",
+        "meta_title": "{{CJ_DATASET_TITLE}} Tile {{TILE_ID}}",
+        "filepath": "{{OUTPUT_CITYJSON_DIR}}/{{TILE_ID}}.json",
+        "identifier_attribute": "{{id_attribute}}",
+        "output_attribute_names": {
+          "ArrDissolve-LoD12.global_elevation_50p": "h_dak_50p",
+          "ArrDissolve-LoD12.global_elevation_70p": "h_dak_70p",
+          "ArrDissolve-LoD12.global_elevation_max": "h_dak_max",
+          "ArrDissolve-LoD12.global_elevation_min": "h_dak_min",
+          "DataCoverageCalc.data_coverage": "data_coverage",
+          "PC2MeshQuality-LoD12.mesh_error_f": "rmse_lod12",
+          "PC2MeshQuality-LoD13.mesh_error_f": "rmse_lod13",
+          "PC2MeshQuality-LoD22.mesh_error_f": "rmse_lod22",
+          "Reconstructor.timings": "t_run",
+          "SegmentRasterise.data_area": "data_area",
+          "SkipReplaceTester.replace": "lod11_replace",
+          "SkipReplaceTester.roof_type": "dak_type",
+          "SkipReplaceTester.skip": "reconstruction_skipped",
+          "Validator-LoD12.errors": "val3dity_codes_lod12",
+          "Validator-LoD13.errors": "val3dity_codes_lod13",
+          "Validator-LoD22.errors": "val3dity_codes_lod22",
+          "ground_elevations": "h_maaiveld"
+        },
+        "meta_poc_address": "",
+        "meta_poc_contactName": "",
+        "meta_poc_contactType": "",
+        "meta_poc_emailAddress": "",
+        "meta_poc_phone": "",
+        "meta_poc_website": "",
+        "prettyPrint": false,
+        "meta_referenceSystem": "{{OUTPUT_CRS}}"
+      },
+      "position": [
+        1866.0,
+        442.5
+      ],
+      "type": [
+        "CoreIO",
+        "CityJSONWriter"
+      ]
+    },
+    "LASInPolygons": {
+      "connections": {
+        "ground_elevations": [
+          [
+            "CityJSONWriter",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD11-2D",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD12-3D",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD13-3D",
+            "attributes"
+          ],
+          [
+            "Reconstructor",
+            "LOD1Extruder-LoD11.floor_elevation"
+          ],
+          [
+            "Reconstructor",
+            "ArrExtruder-LoD12.floor_elevation"
+          ],
+          [
+            "Reconstructor",
+            "ArrExtruder-LoD13.floor_elevation"
+          ],
+          [
+            "Reconstructor",
+            "Arr2LinearRings-LoD13.attributes"
+          ],
+          [
+            "Reconstructor",
+            "AttrRingsSelector-LoD12.attributes_A"
+          ],
+          [
+            "Reconstructor",
+            "Arr2LinearRings-LoD12.attributes"
+          ],
+          [
+            "Reconstructor",
+            "AttrRingsSelector-LoD13.attributes_A"
+          ]
+        ],
+        "point_clouds": [
+          [
+            "Reconstructor",
+            "PointCloudSplitter.point_cloud"
+          ]
+        ]
+      },
+      "marked_inputs": {
+        "buf_polygons": false,
+        "polygons": false
+      },
+      "marked_outputs": {
+        "ground_elevations": false,
+        "point_clouds": false
+      },
+      "parameters": {
+        "buffer": 1.0,
+        "building_class": 6,
+        "cellsize": 50.0,
+        "ground_class": 2,
+        "ground_percentile": 0.05000000074505806,
+        "las_filepaths": "{{INPUT_LAS_FILES}}"
+      },
+      "position": [
+        406.04998779296875,
+        278.2076416015625
+      ],
+      "type": [
+        "building-reconstruction",
+        "LASInPolygons"
+      ]
+    },
+    "OBJVecWriter-LoD12": {
+      "marked_inputs": {
+        "attributes": false,
+        "triangles": false
+      },
+      "parameters": {
+        "Headerline": "Run reference: {{RUN_REFERENCE}}",
+        "attribute_name": "identificatie",
+        "filepath": "{{OUTPUT_OBJ_DIR}}/{{OUTPUT_LAYERNAME_LOD12_3D}}_{{TILE_ID}}.obj",
+        "no_offset": false,
+        "precision": 3
+      },
+      "position": [
+        1862.0,
+        317.0
+      ],
+      "type": [
+        "CoreIO",
+        "OBJVecWriter"
+      ]
+    },
+    "OBJVecWriter-LoD13": {
+      "marked_inputs": {
+        "attributes": false,
+        "triangles": false
+      },
+      "parameters": {
+        "Headerline": "Run reference: {{RUN_REFERENCE}}",
+        "attribute_name": "{{id_attribute}}",
+        "filepath": "{{OUTPUT_OBJ_DIR}}/{{OUTPUT_LAYERNAME_LOD13_3D}}_{{TILE_ID}}.obj",
+        "no_offset": false,
+        "precision": 3
+      },
+      "position": [
+        1858.0,
+        376.0
+      ],
+      "type": [
+        "CoreIO",
+        "OBJVecWriter"
+      ]
+    },
+    "OGRLoader": {
+      "connections": {
+        "attributes": [
+          [
+            "CityJSONWriter",
+            "attributes"
+          ],
+          [
+            "OBJVecWriter-LoD12",
+            "attributes"
+          ],
+          [
+            "OBJVecWriter-LoD13",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD11-2D",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD12-3D",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD13-3D",
+            "attributes"
+          ],
+          [
+            "Reconstructor",
+            "AttributeTester.attributes"
+          ],
+          [
+            "Reconstructor",
+            "Arr2LinearRings-LoD13.attributes"
+          ],
+          [
+            "Reconstructor",
+            "AttrRingsSelector-LoD12.attributes_A"
+          ],
+          [
+            "Reconstructor",
+            "Arr2LinearRings-LoD12.attributes"
+          ],
+          [
+            "Reconstructor",
+            "AttrRingsSelector-LoD13.attributes_A"
+          ]
+        ],
+        "linear_rings": [
+          [
+            "PolygonSimplifyGEOS",
+            "polygons"
+          ]
+        ]
+      },
+      "marked_outputs": {
+        "area": false,
+        "attributes": false,
+        "is_valid": false,
+        "line_strings": false,
+        "linear_rings": false
+      },
+      "parameters": {
+        "base_elevation": 0.0,
+        "filepath": "{{INPUT_FOOTPRINT_SOURCE}}",
+        "layer_id": 0
+      },
+      "position": [
+        420.0,
+        -28.0
+      ],
+      "type": [
+        "io-gdal",
+        "OGRLoader"
+      ]
+    },
+    "OGRWriter-LoD11-2D": {
+      "marked_inputs": {
+        "attributes": false,
+        "geometries": false
+      },
+      "parameters": {
+        "create_directories": false,
+        "epsg": 7415,
+        "filepath": "{{OUTPUT_DB_CONNECTION}}",
+        "gdaldriver": "{{OUTPUT_FORMAT}}",
+        "layername": "{{OUTPUT_LAYERNAME_LOD11_2D}}",
+        "output_attribute_names": {
+          "ArrDissolve-LoD12.global_elevation_50p": "h_dak_50p",
+          "ArrDissolve-LoD12.global_elevation_70p": "h_dak_70p",
+          "ArrDissolve-LoD12.global_elevation_max": "h_dak_max",
+          "ArrDissolve-LoD12.global_elevation_min": "h_dak_min",
+          "DataCoverageCalc.data_coverage": "data_coverage",
+          "DetectPlanes.roof_elevation": "h_dak",
+          "DetectPlanes.roof_pt_cnt": "roof_pt_cnt",
+          "DetectPlanes.total_roofplane_cnt": "roofplane_cnt",
+          "DetectPlanes.unsegmented_pt_cnt": "usegmented_pt_cnt",
+          "DetectPlanes.wall_pt_cnt": "wall_pt_cnt",
+          "PC2MeshQuality-LoD12.mesh_error_f": "rmse_lod12",
+          "PC2MeshQuality-LoD13.mesh_error_f": "rmse_lod13",
+          "PC2MeshQuality-LoD22.mesh_error_f": "rmse_lod22",
+          "Reconstructor.timings": "t_run",
+          "SegmentRasterise.data_area": "data_area",
+          "SkipReplaceTester.replace": "lod11_replace",
+          "SkipReplaceTester.roof_type": "dak_type",
+          "SkipReplaceTester.skip": "reconstruction_skipped",
+          "ground_elevations": "h_maaiveld"
+        },
+        "overwrite": "{{overwrite_output}}",
+        "transaction_batch_size_": 1000
+      },
+      "position": [
+        1857.60009765625,
+        -98.0224609375
+      ],
+      "type": [
+        "io-gdal",
+        "OGRWriter"
+      ]
+    },
+    "OGRWriter-LoD12-2D": {
+      "marked_inputs": {
+        "attributes": false,
+        "geometries": false
+      },
+      "parameters": {
+        "create_directories": false,
+        "epsg": 7415,
+        "filepath": "{{OUTPUT_DB_CONNECTION}}",
+        "gdaldriver": "{{OUTPUT_FORMAT}}",
+        "layername": "{{OUTPUT_LAYERNAME_LOD12_2D}}",
+        "output_attribute_names": {
+          "ground_elevations": "h_maaiveld",
+          "roof_type": "dak_type"
+        },
+        "overwrite": "{{overwrite_output}}",
+        "transaction_batch_size_": 1000
+      },
+      "position": [
+        1854.0,
+        -3.0
+      ],
+      "type": [
+        "io-gdal",
+        "OGRWriter"
+      ]
+    },
+    "OGRWriter-LoD12-3D": {
+      "marked_inputs": {
+        "attributes": false,
+        "geometries": false
+      },
+      "parameters": {
+        "create_directories": false,
+        "epsg": 7415,
+        "filepath": "{{OUTPUT_DB_CONNECTION}}",
+        "gdaldriver": "{{OUTPUT_FORMAT}}",
+        "layername": "{{OUTPUT_LAYERNAME_LOD12_3D}}",
+        "output_attribute_names": {
+          "DataCoverageCalc.data_coverage": "data_coverage",
+          "DetectPlanes.total_roofplane_cnt": "toofplane_cnt",
+          "PC2MeshQuality-LoD12.error_hist": "error_hist",
+          "PC2MeshQuality-LoD12.m2pc_error_hist": "m2pc_error_hist",
+          "PC2MeshQuality-LoD12.m2pc_error_max": "m2pc_error_max",
+          "PC2MeshQuality-LoD12.mesh_error_f": "rmse",
+          "Reconstructor.timings": "t_run",
+          "SegmentRasterise.data_area": "data_area",
+          "SkipReplaceTester.replace": "lod11_replace",
+          "SkipReplaceTester.roof_type": "dak_type",
+          "Validator-LoD12.errors": "val3dity_codes",
+          "ground_elevations": "h_maaiveld"
+        },
+        "overwrite": "{{overwrite_output}}",
+        "transaction_batch_size_": 1000
+      },
+      "position": [
+        1854.0,
+        59.0
+      ],
+      "type": [
+        "io-gdal",
+        "OGRWriter"
+      ]
+    },
+    "OGRWriter-LoD13-2D": {
+      "marked_inputs": {
+        "attributes": false,
+        "geometries": false
+      },
+      "parameters": {
+        "create_directories": false,
+        "epsg": 7415,
+        "filepath": "{{OUTPUT_DB_CONNECTION}}",
+        "gdaldriver": "{{OUTPUT_FORMAT}}",
+        "layername": "{{OUTPUT_LAYERNAME_LOD13_2D}}",
+        "output_attribute_names": {
+          "ground_elevations": "h_maaiveld",
+          "roof_type": "dak_type"
+        },
+        "overwrite": "{{overwrite_output}}",
+        "transaction_batch_size_": 1000
+      },
+      "position": [
+        1856.0999755859375,
+        132.61520385742188
+      ],
+      "type": [
+        "io-gdal",
+        "OGRWriter"
+      ]
+    },
+    "OGRWriter-LoD13-3D": {
+      "marked_inputs": {
+        "attributes": false,
+        "geometries": false
+      },
+      "parameters": {
+        "create_directories": false,
+        "epsg": 7415,
+        "filepath": "{{OUTPUT_DB_CONNECTION}}",
+        "gdaldriver": "{{OUTPUT_FORMAT}}",
+        "layername": "{{OUTPUT_LAYERNAME_LOD13_3D}}",
+        "output_attribute_names": {
+          "DataCoverageCalc.data_coverage": "data_coverage",
+          "DetectPlanes.total_roofplane_cnt": "toofplane_cnt",
+          "PC2MeshQuality-LoD13.error_hist": "error_hist",
+          "PC2MeshQuality-LoD13.m2pc_error_hist": "m2pc_error_hist",
+          "PC2MeshQuality-LoD13.m2pc_error_max": "m2pc_error_max",
+          "PC2MeshQuality-LoD13.mesh_error_f": "rmse",
+          "Reconstructor.timings": "t_run",
+          "SegmentRasterise.data_area": "data_area",
+          "SkipReplaceTester.replace": "lod11_replace",
+          "SkipReplaceTester.roof_type": "dak_type",
+          "Validator-LoD13.errors": "val3dity_codes",
+          "ground_elevations": "h_maaiveld"
+        },
+        "overwrite": "{{overwrite_output}}",
+        "transaction_batch_size_": 1000
+      },
+      "position": [
+        1856.0999755859375,
+        193.615234375
+      ],
+      "type": [
+        "io-gdal",
+        "OGRWriter"
+      ]
+    },
+    "PolygonBufferGEOS": {
+      "connections": {
+        "offset_polygons": [
+          [
+            "LASInPolygons",
+            "buf_polygons"
+          ]
+        ]
+      },
+      "marked_inputs": {
+        "polygons": false
+      },
+      "marked_outputs": {
+        "offset_polygons": false
+      },
+      "parameters": {
+        "offset": 4.0
+      },
+      "position": [
+        260.0,
+        124.0
+      ],
+      "type": [
+        "io-gdal",
+        "PolygonBufferGEOS"
+      ]
+    },
+    "PolygonSimplifyGEOS": {
+      "connections": {
+        "simplified_polygons": [
+          [
+            "CityJSONWriter",
+            "footprints"
+          ],
+          [
+            "LASInPolygons",
+            "polygons"
+          ],
+          [
+            "OGRWriter-LoD11-2D",
+            "geometries"
+          ],
+          [
+            "PolygonBufferGEOS",
+            "polygons"
+          ],
+          [
+            "Reconstructor",
+            "LOD1Extruder-LoD11.polygon"
+          ],
+          [
+            "Reconstructor",
+            "AttrRingsSelector-LoD12.linear_rings_A"
+          ],
+          [
+            "Reconstructor",
+            "DataCoverageCalc.footprint_polygon"
+          ],
+          [
+            "Reconstructor",
+            "BuildArrFromLines.footprint"
+          ],
+          [
+            "Reconstructor",
+            "AttrRingsSelector-LoD13.linear_rings_A"
+          ]
+        ]
+      },
+      "marked_inputs": {
+        "polygons": false
+      },
+      "marked_outputs": {
+        "simplified_polygons": false
+      },
+      "parameters": {
+        "tolerance": 0.009999999776482582
+      },
+      "position": [
+        299.97509765625,
+        83.5
+      ],
+      "type": [
+        "io-gdal",
+        "PolygonSimplifyGEOS"
+      ]
+    },
+    "Reconstructor": {
+      "connections": {
+        "ArrDissolve-LoD12.global_elevation_50p": [
+          [
+            "CityJSONWriter",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD11-2D",
+            "attributes"
+          ]
+        ],
+        "ArrDissolve-LoD12.global_elevation_70p": [
+          [
+            "CityJSONWriter",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD11-2D",
+            "attributes"
+          ]
+        ],
+        "ArrDissolve-LoD12.global_elevation_max": [
+          [
+            "CityJSONWriter",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD11-2D",
+            "attributes"
+          ]
+        ],
+        "ArrDissolve-LoD12.global_elevation_min": [
+          [
+            "CityJSONWriter",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD11-2D",
+            "attributes"
+          ]
+        ],
+        "AttrRingsSelector-LoD12.attributes": [
+          [
+            "OGRWriter-LoD12-2D",
+            "attributes"
+          ]
+        ],
+        "AttrRingsSelector-LoD12.linear_rings": [
+          [
+            "OGRWriter-LoD12-2D",
+            "geometries"
+          ]
+        ],
+        "AttrRingsSelector-LoD13.attributes": [
+          [
+            "OGRWriter-LoD13-2D",
+            "attributes"
+          ]
+        ],
+        "AttrRingsSelector-LoD13.linear_rings": [
+          [
+            "OGRWriter-LoD13-2D",
+            "geometries"
+          ]
+        ],
+        "DataCoverageCalc.data_coverage": [
+          [
+            "CityJSONWriter",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD11-2D",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD12-3D",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD13-3D",
+            "attributes"
+          ]
+        ],
+        "DetectPlanes.roof_pt_cnt": [
+          [
+            "OGRWriter-LoD11-2D",
+            "attributes"
+          ]
+        ],
+        "DetectPlanes.total_roofplane_cnt": [
+          [
+            "OGRWriter-LoD11-2D",
+            "attributes"
+          ]
+        ],
+        "DetectPlanes.unsegmented_pt_cnt": [
+          [
+            "OGRWriter-LoD11-2D",
+            "attributes"
+          ]
+        ],
+        "DetectPlanes.wall_pt_cnt": [
+          [
+            "OGRWriter-LoD11-2D",
+            "attributes"
+          ]
+        ],
+        "FacesSelector-LoD12.faces": [
+          [
+            "CityJSONWriter",
+            "geometry_lod12"
+          ],
+          [
+            "OGRWriter-LoD12-3D",
+            "geometries"
+          ]
+        ],
+        "FacesSelector-LoD13.faces": [
+          [
+            "CityJSONWriter",
+            "geometry_lod13"
+          ],
+          [
+            "OGRWriter-LoD13-3D",
+            "geometries"
+          ]
+        ],
+        "PC2MeshQuality-LoD12.error_hist": [
+          [
+            "OGRWriter-LoD12-3D",
+            "attributes"
+          ]
+        ],
+        "PC2MeshQuality-LoD12.m2pc_error_hist": [
+          [
+            "OGRWriter-LoD12-3D",
+            "attributes"
+          ]
+        ],
+        "PC2MeshQuality-LoD12.m2pc_error_max": [
+          [
+            "OGRWriter-LoD12-3D",
+            "attributes"
+          ]
+        ],
+        "PC2MeshQuality-LoD12.mesh_error_f": [
+          [
+            "CityJSONWriter",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD11-2D",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD12-3D",
+            "attributes"
+          ]
+        ],
+        "PC2MeshQuality-LoD13.error_hist": [
+          [
+            "OGRWriter-LoD13-3D",
+            "attributes"
+          ]
+        ],
+        "PC2MeshQuality-LoD13.m2pc_error_hist": [
+          [
+            "OGRWriter-LoD13-3D",
+            "attributes"
+          ]
+        ],
+        "PC2MeshQuality-LoD13.m2pc_error_max": [
+          [
+            "OGRWriter-LoD13-3D",
+            "attributes"
+          ]
+        ],
+        "PC2MeshQuality-LoD13.mesh_error_f": [
+          [
+            "CityJSONWriter",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD11-2D",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD13-3D",
+            "attributes"
+          ]
+        ],
+        "PolygonTriangulator-LoD12.multi_triangle_collections": [
+          [
+            "OBJVecWriter-LoD12",
+            "triangles"
+          ]
+        ],
+        "PolygonTriangulator-LoD13.multi_triangle_collections": [
+          [
+            "OBJVecWriter-LoD13",
+            "triangles"
+          ]
+        ],
+        "Reconstructor.timings": [
+          [
+            "CityJSONWriter",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD11-2D",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD12-3D",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD13-3D",
+            "attributes"
+          ]
+        ],
+        "SegmentRasterise.data_area": [
+          [
+            "CityJSONWriter",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD11-2D",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD12-3D",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD13-3D",
+            "attributes"
+          ]
+        ],
+        "SkipReplaceTester.replace": [
+          [
+            "CityJSONWriter",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD11-2D",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD12-3D",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD13-3D",
+            "attributes"
+          ]
+        ],
+        "SkipReplaceTester.roof_type": [
+          [
+            "CityJSONWriter",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD11-2D",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD12-3D",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD13-3D",
+            "attributes"
+          ]
+        ],
+        "SkipReplaceTester.skip": [
+          [
+            "CityJSONWriter",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD11-2D",
+            "attributes"
+          ]
+        ],
+        "Validator-LoD12.errors": [
+          [
+            "CityJSONWriter",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD12-3D",
+            "attributes"
+          ]
+        ],
+        "Validator-LoD13.errors": [
+          [
+            "CityJSONWriter",
+            "attributes"
+          ],
+          [
+            "OGRWriter-LoD13-3D",
+            "attributes"
+          ]
+        ]
+      },
+      "marked_inputs": {
+        "Arr2LinearRings-LoD12.attributes": false,
+        "Arr2LinearRings-LoD13.attributes": false,
+        "ArrExtruder-LoD12.floor_elevation": false,
+        "ArrExtruder-LoD13.floor_elevation": false,
+        "AttrRingsSelector-LoD12.attributes_A": false,
+        "AttrRingsSelector-LoD12.linear_rings_A": false,
+        "AttrRingsSelector-LoD13.attributes_A": false,
+        "AttrRingsSelector-LoD13.linear_rings_A": false,
+        "AttributeTester.attributes": false,
+        "BuildArrFromLines.footprint": false,
+        "DataCoverageCalc.footprint_polygon": false,
+        "LOD1Extruder-LoD11.floor_elevation": false,
+        "LOD1Extruder-LoD11.polygon": false,
+        "PointCloudSplitter.point_cloud": false,
+        "Reconstructor.globals": false
+      },
+      "marked_outputs": {
+        "ArrDissolve-LoD12.global_elevation_50p": false,
+        "ArrDissolve-LoD12.global_elevation_70p": false,
+        "ArrDissolve-LoD12.global_elevation_max": false,
+        "ArrDissolve-LoD12.global_elevation_min": false,
+        "AttrRingsSelector-LoD12.attributes": false,
+        "AttrRingsSelector-LoD12.linear_rings": false,
+        "AttrRingsSelector-LoD13.attributes": false,
+        "AttrRingsSelector-LoD13.linear_rings": false,
+        "DataCoverageCalc.data_coverage": false,
+        "DetectPlanes.roof_pt_cnt": false,
+        "DetectPlanes.total_roofplane_cnt": false,
+        "DetectPlanes.unsegmented_pt_cnt": false,
+        "DetectPlanes.wall_pt_cnt": false,
+        "FacesSelector-LoD12.faces": false,
+        "FacesSelector-LoD13.faces": false,
+        "PC2MeshQuality-LoD11.error_hist": false,
+        "PC2MeshQuality-LoD11.m2pc_error_hist": false,
+        "PC2MeshQuality-LoD11.m2pc_error_max": false,
+        "PC2MeshQuality-LoD11.mesh_error_f": false,
+        "PC2MeshQuality-LoD12.error_hist": false,
+        "PC2MeshQuality-LoD12.m2pc_error_hist": false,
+        "PC2MeshQuality-LoD12.m2pc_error_max": false,
+        "PC2MeshQuality-LoD12.mesh_error_f": false,
+        "PC2MeshQuality-LoD13.error_hist": false,
+        "PC2MeshQuality-LoD13.m2pc_error_hist": false,
+        "PC2MeshQuality-LoD13.m2pc_error_max": false,
+        "PC2MeshQuality-LoD13.mesh_error_f": false,
+        "PolygonTriangulator-LoD11.multi_triangle_collections": false,
+        "PolygonTriangulator-LoD12.multi_triangle_collections": false,
+        "PolygonTriangulator-LoD13.multi_triangle_collections": false,
+        "Reconstructor.timings": false,
+        "SegmentRasterise.data_area": false,
+        "SkipReplaceTester.replace": false,
+        "SkipReplaceTester.roof_type": false,
+        "SkipReplaceTester.skip": false,
+        "Validator-LoD12.errors": false,
+        "Validator-LoD13.errors": false
+      },
+      "parameters": {
+        "filepath": "reconstruct_one.json"
+      },
+      "position": [
+        794.0,
+        33.0
+      ],
+      "type": [
+        "Core",
+        "NestedFlowchart"
+      ]
+    }
+  }
+}
